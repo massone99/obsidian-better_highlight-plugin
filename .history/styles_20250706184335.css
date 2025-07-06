@@ -26,13 +26,7 @@
 
 #header-color-picker {
     width: 100%;
-    margin: 0px 0px;
+    /* Optional: set a width */
+    margin: 10px 0;
     text-align: center;
-}
-
-#search-color {
-    width: 100%;
-    height: 30px;
-    text-align: left;
-    color: black;
 }

@@ -1,0 +1,20 @@
+.scrollable-list {
+    height: 150px;         /* Fixed height for the container */
+    overflow-y: auto;      /* Adds vertical scrollbar if needed */
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;          /* Optional: set a width */
+    background: #fafafa;
+  }
+  
+  .scrollable-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;      /* Optional: removes bullet points */
+  }
+  
+  .scrollable-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+  }

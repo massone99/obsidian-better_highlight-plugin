@@ -31,8 +31,8 @@
 }
 
 #search-color {
+    background-color: aquamarine;
     width: 100%;
-    height: 30px;
-    text-align: left;
+    text-align: center;
     color: black;
 }
