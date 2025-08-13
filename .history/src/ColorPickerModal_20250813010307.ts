@@ -1,6 +1,6 @@
 import { Modal, App } from 'obsidian';
-import colors from './colors';
-import { getColor, ColorName } from './colors';
+import colors from '../backup/colors';
+import { getColor, ColorName } from '../backup/colors';
 import { createRoot, Root } from "react-dom/client";
 import React from 'react';
 
@@ -11,13 +11,6 @@ export class ColorPickerModal extends Modal {
 	constructor(app: App) {
 		super(app);
 	}
-
-	function ColorPicker() {
-		return (
-			<div className="color-picker"></div>
-		);
-	}
-
 
 	onOpen() {
 		// const { contentEl } = this;
