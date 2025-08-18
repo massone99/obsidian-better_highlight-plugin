@@ -35,7 +35,7 @@ const ColorItem = ({ colorName, colorCode }: ColorItemProps) => {
 				backgroundColor: colorCode
 			}}></span>
 			<span
-				style={{ display: 'inline-block' }}
+				style={{ backgroundColor: colorCode, display: 'inline-block' }}
 			>
 				{colorName}
 			</span>

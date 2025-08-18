@@ -21,21 +21,16 @@ type ColorItemProps = {
 
 const ColorItem = ({ colorName, colorCode }: ColorItemProps) => {
 	console.log("colorCode: " + colorCode)
-	
-	let circleSize = 15;
-
 	return (
 		<li>
 			<span style={{
-				display: 'inline-block',
-				width: `${circleSize}px`,
-				margin: '0em 1em',
-				height: `${circleSize}px`,
+				width: '50px',
+				height: '50px',
 				borderRadius: '50%',
-				backgroundColor: colorCode
+				background: 'white'
 			}}></span>
 			<span
-				style={{ display: 'inline-block' }}
+				style={{ backgroundColor: colorCode, display: 'inline-block' }}
 			>
 				{colorName}
 			</span>

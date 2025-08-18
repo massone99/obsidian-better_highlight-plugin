@@ -32,10 +32,10 @@ const ColorItem = ({ colorName, colorCode }: ColorItemProps) => {
 				margin: '0em 1em',
 				height: `${circleSize}px`,
 				borderRadius: '50%',
-				backgroundColor: colorCode
+				backgroundColor: 
 			}}></span>
 			<span
-				style={{ display: 'inline-block' }}
+				style={{ backgroundColor: colorCode, display: 'inline-block' }}
 			>
 				{colorName}
 			</span>

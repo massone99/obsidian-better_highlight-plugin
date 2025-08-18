@@ -5,7 +5,7 @@ import { createRoot, Root } from "react-dom/client";
 
 const ColorPickerTitle = () => {
 	return (
-		<h2>Choose a color to highlight</h2>
+		<h2>Title</h2>
 	);
 }
 
@@ -21,21 +21,10 @@ type ColorItemProps = {
 
 const ColorItem = ({ colorName, colorCode }: ColorItemProps) => {
 	console.log("colorCode: " + colorCode)
-	
-	let circleSize = 15;
-
 	return (
 		<li>
-			<span style={{
-				display: 'inline-block',
-				width: `${circleSize}px`,
-				margin: '0em 1em',
-				height: `${circleSize}px`,
-				borderRadius: '50%',
-				backgroundColor: colorCode
-			}}></span>
 			<span
-				style={{ display: 'inline-block' }}
+				style={{ backgroundColor: colorCode, display: 'inline-block' }}
 			>
 				{colorName}
 			</span>
@@ -50,15 +39,15 @@ type ColorMapProps = {
 const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 
 	return (
-		<div style={{ padding: '2em', background: 'black', opacity: '1.0' }}>
+		<>
 			<ColorPickerTitle />
-			<ColorPickerInput />
-			<ul style={{ maxHeight: '400px', overflowY: 'auto' }}>
+			<ul>
 				{Object.entries(colorMap).map(([colorName, colorCode]) => (
-					<ColorItem colorName={colorName} colorCode={colorCode} />
+					<ColorItem colorName="aliceblue" colorCode={getColor('saddlebrown')} />
 				))}
 			</ul>
-		</div>
+			<ColorPickerInput />
+		</>
 	)
 }
 
@@ -76,6 +65,30 @@ export class ColorPickerModal extends Modal {
 
 
 	onOpen() {
+
+
+
+
+
+
+		// contentEl.innerHTML = `
+		// 	<label for="color">Highlight color:</label>
+		// 	<input type="text" id="color_picker" name="color_picker">
+		// 	<div class="scrollable-list">
+		// 		<ul>
+		// 			<li>Item 1</li>
+		// 			<li>Item 2</li>
+		// 			<li>Item 3</li>
+		// 			<li>Item 4</li>
+		// 			<li>Item 5</li>
+		// 			<li>Item 6</li>
+		// 			<li>Item 7</li>
+		// 			<li>Item 8</li>
+		// 			<li>Item 9</li>
+		// 			<li>Item 10</li>
+		// 		</ul>
+		// 	</div>
+		// `
 		this.containerEl.empty();
 
 		const container = this.containerEl.createDiv({ cls: 'color-picker-modal' });

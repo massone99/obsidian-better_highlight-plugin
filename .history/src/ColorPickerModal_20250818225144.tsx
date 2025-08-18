@@ -21,25 +21,13 @@ type ColorItemProps = {
 
 const ColorItem = ({ colorName, colorCode }: ColorItemProps) => {
 	console.log("colorCode: " + colorCode)
-	
-	let circleSize = 15;
-
 	return (
-		<li>
-			<span style={{
-				display: 'inline-block',
-				width: `${circleSize}px`,
-				margin: '0em 1em',
-				height: `${circleSize}px`,
-				borderRadius: '50%',
-				backgroundColor: colorCode
-			}}></span>
-			<span
-				style={{ display: 'inline-block' }}
-			>
-				{colorName}
-			</span>
-		</li>
+		<
+		<span
+			style={{ backgroundColor: colorCode, display: 'inline-block' }}
+		>
+			{colorName}
+		</span>
 	);
 }
 
@@ -50,14 +38,14 @@ type ColorMapProps = {
 const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 
 	return (
-		<div style={{ padding: '2em', background: 'black', opacity: '1.0' }}>
+		<div style={{ maxHeight: '200px', overflowY: 'auto' }}>
 			<ColorPickerTitle />
-			<ColorPickerInput />
-			<ul style={{ maxHeight: '400px', overflowY: 'auto' }}>
+			<ul>
 				{Object.entries(colorMap).map(([colorName, colorCode]) => (
 					<ColorItem colorName={colorName} colorCode={colorCode} />
 				))}
 			</ul>
+			<ColorPickerInput />
 		</div>
 	)
 }
