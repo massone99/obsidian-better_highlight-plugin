@@ -2,7 +2,7 @@ import { Modal, App } from 'obsidian';
 import colors from './aesthetic/colors';
 import { ColorName } from './aesthetic/colors';
 import { createRoot, Root } from "react-dom/client";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ColorPickerTitle = () => {
 	return (
@@ -11,12 +11,9 @@ const ColorPickerTitle = () => {
 }
 
 
-type ColorInputProps = {
-	colorName: string;
-	onColorNameChange: (name: string) => void;
-};
+const 
 
-const ColorPickerInput = ({ colorName, onColorNameChange }: ColorInputProps) => {
+const ColorPickerInput = ({colorName, onColorNameChange}) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
@@ -67,12 +64,6 @@ type ColorMapProps = {
 const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 	const [colorName, setColorName] = useState("");
 
-	const filteredColorNames = useMemo(() => {
-		return Object
-			.entries(colorMap)
-			.filter((color) => color[0].toLowerCase().includes(colorName.toLowerCase()));
-	}, [colorMap, colorName]);
-
 	return (
 		<div style={{
 			padding: '1em',
@@ -82,12 +73,11 @@ const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 			opacity: '1.0'
 		}}>
 			<ColorPickerTitle />
-			<ColorPickerInput colorName={colorName} onColorNameChange={setColorName} />
+			<ColorPickerInput />
 			<ul style={{ maxHeight: '400px', overflowY: 'auto' }}>
-				{filteredColorNames
-					.map(([colorName, colorCode]) => (
-						<ColorItem colorName={colorName} colorCode={colorCode} />
-					))}
+				{Object.entries(colorMap).filter().map(([colorName, colorCode]) => (
+					<ColorItem colorName={colorName} colorCode={colorCode} />
+				))}
 			</ul>
 		</div>
 	)

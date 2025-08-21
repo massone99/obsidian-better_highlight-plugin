@@ -83,7 +83,10 @@ export const colors: Record<string, string> = {
 } as const;
 
 // Type for color names
-export type ColorName = keyof typeof colors
+export type ColorName = keyof typeof colors;
+
+// Helper function to get a color value
+export const getColor = (name: ColorName): string => colors[name];
 
 // Helper function to get all color names
 export const getColorNames = (): ColorName[] => Object.keys(colors) as ColorName[];

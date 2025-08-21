@@ -71,7 +71,7 @@ const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 		return Object
 			.entries(colorMap)
 			.filter((color) => color[0].toLowerCase().includes(colorName.toLowerCase()));
-	}, [colorMap, colorName]);
+	}, );
 
 	return (
 		<div style={{

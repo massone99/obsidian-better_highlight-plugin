@@ -67,12 +67,7 @@ type ColorMapProps = {
 const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 	const [colorName, setColorName] = useState("");
 
-	const filteredColorNames = useMemo(() => {
-		return Object
-			.entries(colorMap)
-			.filter((color) => color[0].toLowerCase().includes(colorName.toLowerCase()));
-	}, [colorMap, colorName]);
-
+	const filteredColorNames = useMemo()
 	return (
 		<div style={{
 			padding: '1em',
