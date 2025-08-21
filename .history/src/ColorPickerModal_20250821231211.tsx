@@ -2,7 +2,7 @@ import { Modal, App } from 'obsidian';
 import colors from './aesthetic/colors';
 import { getColor, ColorName } from './aesthetic/colors';
 import { createRoot, Root } from "react-dom/client";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const ColorPickerTitle = () => {
 	return (
@@ -12,21 +12,12 @@ const ColorPickerTitle = () => {
 
 
 const ColorPickerInput = () => {
-	const inputRef = useRef<HTMLInputElement>(null);
 	const [color, setColor] = useState("");
-
-	useEffect(() => {
-		inputRef?.current?.focus();
-	})
 
 	return <input
 		placeholder="Highlight color"
 		value={color}
-		ref={inputRef}
-		onChange={(e) => {
-			console.log("Color input changed: " + e.target.value);
-			setColor(e.target.value)
-		}}
+		onChange={(e) => { setColor(e.target.value) }}
 		id="search-color" />;
 }
 

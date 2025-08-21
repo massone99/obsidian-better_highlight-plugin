@@ -22,7 +22,6 @@ const ColorPickerInput = () => {
 	return <input
 		placeholder="Highlight color"
 		value={color}
-		ref={inputRef}
 		onChange={(e) => {
 			console.log("Color input changed: " + e.target.value);
 			setColor(e.target.value)

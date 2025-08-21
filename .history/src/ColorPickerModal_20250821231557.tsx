@@ -15,14 +15,11 @@ const ColorPickerInput = () => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [color, setColor] = useState("");
 
-	useEffect(() => {
-		inputRef?.current?.focus();
-	})
+	useEffect(() => {})
 
 	return <input
 		placeholder="Highlight color"
 		value={color}
-		ref={inputRef}
 		onChange={(e) => {
 			console.log("Color input changed: " + e.target.value);
 			setColor(e.target.value)
