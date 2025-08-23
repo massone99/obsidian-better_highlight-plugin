@@ -39,7 +39,7 @@ type ColorItemProps = {
 	isActive?: boolean;
 };
 
-const ColorItem = ({ colorName, colorCode, isActive }: ColorItemProps) => {
+const ColorItem = ({ colorName, colorCode, isActive}: ColorItemProps) => {
 	let circleSize = 15;
 
 	return (
@@ -53,10 +53,9 @@ const ColorItem = ({ colorName, colorCode, isActive }: ColorItemProps) => {
 				backgroundColor: colorCode,
 			}}></span>
 			<span
-				style={{
-					display: 'inline-block',
-					backgroundColor: isActive ? 'var(--background-modifier-hover)' : 'transparent',
-					padding: '0.2em 0.5em',
+				style={{ 
+					display: 'inline-block' 
+					backgro
 				}}
 			>
 				{colorName}

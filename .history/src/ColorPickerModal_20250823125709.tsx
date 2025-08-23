@@ -39,7 +39,7 @@ type ColorItemProps = {
 	isActive?: boolean;
 };
 
-const ColorItem = ({ colorName, colorCode, isActive }: ColorItemProps) => {
+const ColorItem = ({ colorName, colorCode, isActive}: ColorItemProps) => {
 	let circleSize = 15;
 
 	return (
@@ -49,15 +49,11 @@ const ColorItem = ({ colorName, colorCode, isActive }: ColorItemProps) => {
 				width: `${circleSize}px`,
 				margin: '0em 1em',
 				height: `${circleSize}px`,
-				borderRadius: '50%',
-				backgroundColor: colorCode,
+				borderRadius: '50%',q
+				backgroundColor: if (isActive) 'var(--interactive-accent)' else colorCode,
 			}}></span>
 			<span
-				style={{
-					display: 'inline-block',
-					backgroundColor: isActive ? 'var(--background-modifier-hover)' : 'transparent',
-					padding: '0.2em 0.5em',
-				}}
+				style={{ display: 'inline-block' }}
 			>
 				{colorName}
 			</span>
@@ -96,7 +92,7 @@ const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 				{filteredColorNames
 					.map(([colorName, colorCode]) => {
 						if (colorName == firstMatch) {
-							return <ColorItem colorName={colorName} colorCode={colorCode} isActive />
+							return <ColorItem colorName={colorName} colorCode={colorCode} />
 						} else {
 							return <ColorItem colorName={colorName} colorCode={colorCode} />
 						}

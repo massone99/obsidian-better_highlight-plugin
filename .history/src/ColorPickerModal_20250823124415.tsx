@@ -36,10 +36,9 @@ const ColorPickerInput = ({ colorName, onColorNameChange }: ColorInputProps) => 
 type ColorItemProps = {
 	colorName: ColorName;
 	colorCode: string;
-	isActive?: boolean;
 };
 
-const ColorItem = ({ colorName, colorCode, isActive }: ColorItemProps) => {
+const ColorItem = ({ colorName, colorCode }: ColorItemProps) => {
 	let circleSize = 15;
 
 	return (
@@ -50,14 +49,10 @@ const ColorItem = ({ colorName, colorCode, isActive }: ColorItemProps) => {
 				margin: '0em 1em',
 				height: `${circleSize}px`,
 				borderRadius: '50%',
-				backgroundColor: colorCode,
+				backgroundColor: colorCode
 			}}></span>
 			<span
-				style={{
-					display: 'inline-block',
-					backgroundColor: isActive ? 'var(--background-modifier-hover)' : 'transparent',
-					padding: '0.2em 0.5em',
-				}}
+				style={{ display: 'inline-block' }}
 			>
 				{colorName}
 			</span>
@@ -72,6 +67,8 @@ type ColorMapProps = {
 const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 	const [colorName, setColorName] = useState("");
 
+	const [selectedColorName, setSelectedColorName] = useState<ColorName | null>(null);
+
 	const filteredColorNames = useMemo(() => {
 		return Object
 			.entries(colorMap)
@@ -80,7 +77,7 @@ const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 
 	const firstMatch = useMemo(() => {
 		return filteredColorNames.length > 0 ? filteredColorNames[0][0] as ColorName : null;
-	}, [filteredColorNames])
+	}, [filteredColorNames]
 
 	return (
 		<div style={{
@@ -94,13 +91,9 @@ const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 			<ColorPickerInput colorName={colorName} onColorNameChange={setColorName} />
 			<ul style={{ maxHeight: '400px', overflowY: 'auto' }}>
 				{filteredColorNames
-					.map(([colorName, colorCode]) => {
-						if (colorName == firstMatch) {
-							return <ColorItem colorName={colorName} colorCode={colorCode} isActive />
-						} else {
-							return <ColorItem colorName={colorName} colorCode={colorCode} />
-						}
-					})}
+					.map(([colorName, colorCode]) => (
+						<ColorItem colorName={colorName} colorCode={colorCode} />
+					))}
 			</ul>
 		</div>
 	)
