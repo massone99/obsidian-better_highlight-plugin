@@ -13,10 +13,11 @@ const ColorPickerTitle = () => {
 
 type ColorInputProps = {
 	colorName: string;
-	onColorNameChange: (name: string) => void;
+	onColorNameChange: (s: string) => void;
+	onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
-const ColorPickerInput = ({ colorName, onColorNameChange }: ColorInputProps) => {
+const ColorPickerInput = ({ colorName, onColorNameChange, onKeyDown }: ColorInputProps) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
@@ -27,9 +28,10 @@ const ColorPickerInput = ({ colorName, onColorNameChange }: ColorInputProps) => 
 		placeholder="Highlight color"
 		value={colorName}
 		ref={inputRef}
-		onChange={(e) => {
-			onColorNameChange(e.target.value)
+		onChange={e => {
+			onColorNameChange(e.currentTarget.value);
 		}}
+		onKeyDown={onKeyDown}
 		id="search-color" />;
 }
 
@@ -72,15 +74,36 @@ type ColorMapProps = {
 const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 	const [colorName, setColorName] = useState("");
 
+	const onInputType = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		console.log("Event key pressed:", e);
+		if (e.key === 'Enter') {
+			e.preventDefault();
+			onConfirm(e);
+		} else {
+			setColorName(e.currentTarget.value);
+		}
+	}
+
 	const filteredColorNames = useMemo(() => {
 		return Object
 			.entries(colorMap)
-			.filter((color) => color[0].toLowerCase().includes(colorName.toLowerCase()));
+			.filter((color) => color[0].toLowerCase().startsWith(colorName.toLowerCase()));
 	}, [colorMap, colorName]);
 
 	const firstMatch = useMemo(() => {
 		return filteredColorNames.length > 0 ? filteredColorNames[0][0] as ColorName : null;
 	}, [filteredColorNames])
+
+
+	const onConfirm = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		e.preventDefault();
+		console.log("Confirming selection...");
+		if (firstMatch) {
+			console.log("Selected color:", firstMatch, colorMap[firstMatch]);
+			// Here you can handle the selected color (firstMatch)
+			// For example, you might want to pass it to a callback or update some state
+		}
+	}
 
 	return (
 		<div style={{
@@ -91,7 +114,7 @@ const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 			opacity: '1.0'
 		}}>
 			<ColorPickerTitle />
-			<ColorPickerInput colorName={colorName} onColorNameChange={setColorName} />
+			<ColorPickerInput colorName={colorName} onColorNameChange={setColorName} onKeyDown={onInputType} />
 			<ul style={{ maxHeight: '400px', overflowY: 'auto' }}>
 				{filteredColorNames
 					.map(([colorName, colorCode]) => {
