@@ -1,4 +1,4 @@
-import { Modal, App } from 'obsidian';
+import { Modal, App, MarkdownView} from 'obsidian';
 import colors from './aesthetic/colors';
 import { ColorName } from './aesthetic/colors';
 import { createRoot, Root } from "react-dom/client";
@@ -68,10 +68,11 @@ const ColorItem = ({ colorName, colorCode, isActive }: ColorItemProps) => {
 }
 
 type ColorMapProps = {
+	app,
 	colorMap: Record<string, string>
 }
 
-const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
+const ReactColorPickerModal: React.FC<ColorMapProps> = ({ app, colorMap }) => {
 	const [colorName, setColorName] = useState("");
 
 	const onInputType = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -102,6 +103,12 @@ const ReactColorPickerModal: React.FC<ColorMapProps> = ({ colorMap }) => {
 			console.log("Selected color:", firstMatch, colorMap[firstMatch]);
 			// Here you can handle the selected color (firstMatch)
 			// For example, you might want to pass it to a callback or update some state
+			const view = app.workspace.getActiveViewOfType(MarkdownView);
+			if (view) {
+				const editor = view.editor;
+				const selectedText = editor.getSelection();
+				console.log("Selected text:", selectedText);
+			}
 		}
 	}
 
@@ -139,6 +146,7 @@ export class ColorPickerModal extends Modal {
 
 	constructor(app: App) {
 		super(app);
+		this.app = app;
 	}
 
 
@@ -149,7 +157,7 @@ export class ColorPickerModal extends Modal {
 
 		this.reactRoot = createRoot(container);
 		this.reactRoot.render(
-			<ReactColorPickerModal colorMap={colors} />
+			<ReactColorPickerModal app={app} colorMap={colors} />
 		);
 	}
 
