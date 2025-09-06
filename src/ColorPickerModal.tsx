@@ -1,4 +1,4 @@
-import { Modal, App, MarkdownView} from 'obsidian';
+import { Modal, App, MarkdownView } from 'obsidian';
 import colors from './aesthetic/colors';
 import { ColorName } from './aesthetic/colors';
 import { createRoot, Root } from "react-dom/client";
@@ -73,7 +73,7 @@ type ColorMapProps = {
 	onClose: () => void,
 }
 
-const ReactColorPickerModal: React.FC<ColorMapProps> = ({ app, colorMap, onClose}) => {
+const ReactColorPickerModal: React.FC<ColorMapProps> = ({ app, colorMap, onClose }) => {
 	const [colorName, setColorName] = useState("");
 
 	const onInputType = (e: React.KeyboardEvent<HTMLInputElement>) => {
