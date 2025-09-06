@@ -1,3 +1,331 @@
+/* === Basic Colors === */
+mark.aliceblue {
+    background-color: #F0F8FF;
+    color: #000;
+}
+
+mark.antiquewhite {
+    background-color: #FAEBD7;
+    color: #000;
+}
+
+mark.aqua {
+    background-color: #00FFFF;
+    color: #000;
+}
+
+mark.aquamarine {
+    background-color: #7FFFD4;
+    color: #000;
+}
+
+mark.azure {
+    background-color: #F0FFFF;
+    color: #000;
+}
+
+mark.beige {
+    background-color: #F5F5DC;
+    color: #000;
+}
+
+mark.bisque {
+    background-color: #FFE4C4;
+    color: #000;
+}
+
+mark.black {
+    background-color: #000000;
+    color: #fff;
+}
+
+/* === Blue Variations === */
+mark.blanchedalmond {
+    background-color: #FFEBCD;
+    color: #000;
+}
+
+mark.blue {
+    background-color: #0000FF;
+    color: #fff;
+}
+
+mark.blueviolet {
+    background-color: #8A2BE2;
+    color: #fff;
+}
+
+mark.cornflowerblue {
+    background-color: #6495ED;
+    color: #000;
+}
+
+mark.darkblue {
+    background-color: #00008B;
+    color: #fff;
+}
+
+mark.deepskyblue {
+    background-color: #00BFFF;
+    color: #000;
+}
+
+mark.dodgerblue {
+    background-color: #1E90FF;
+    color: #000;
+}
+
+mark.lightblue {
+    background-color: #ADD8E6;
+    color: #000;
+}
+
+/* === Brown Variations === */
+mark.brown {
+    background-color: #A52A2A;
+    color: #fff;
+}
+
+mark.burlywood {
+    background-color: #DEB887;
+    color: #000;
+}
+
+mark.chocolate {
+    background-color: #D2691E;
+    color: #fff;
+}
+
+mark.peru {
+    background-color: #CD853F;
+    color: #000;
+}
+
+mark.rosybrown {
+    background-color: #BC8F8F;
+    color: #000;
+}
+
+mark.saddlebrown {
+    background-color: #8B4513;
+    color: #fff;
+}
+
+mark.sandybrown {
+    background-color: #F4A460;
+    color: #000;
+}
+
+mark.tan {
+    background-color: #D2B48C;
+    color: #000;
+}
+
+/* === Coral & Orange === */
+mark.cadetblue {
+    background-color: #5F9EA0;
+    color: #fff;
+}
+
+mark.coral {
+    background-color: #FF7F50;
+    color: #000;
+}
+
+mark.darkorange {
+    background-color: #FF8C00;
+    color: #000;
+}
+
+mark.orange {
+    background-color: #FFA500;
+    color: #000;
+}
+
+mark.orangered {
+    background-color: #FF4500;
+    color: #fff;
+}
+
+mark.papayawhip {
+    background-color: #FFEFD5;
+    color: #000;
+}
+
+mark.peachpuff {
+    background-color: #FFDAB9;
+    color: #000;
+}
+
+mark.salmon {
+    background-color: #FA8072;
+    color: #000;
+}
+
+/* === Green Variations === */
+mark.chartreuse {
+    background-color: #7FFF00;
+    color: #000;
+}
+
+mark.darkgreen {
+    background-color: #006400;
+    color: #fff;
+}
+
+mark.forestgreen {
+    background-color: #228B22;
+    color: #fff;
+}
+
+mark.green {
+    background-color: #008000;
+    color: #fff;
+}
+
+mark.greenyellow {
+    background-color: #ADFF2F;
+    color: #000;
+}
+
+mark.lightgreen {
+    background-color: #90EE90;
+    color: #000;
+}
+
+mark.lime {
+    background-color: #00FF00;
+    color: #000;
+}
+
+mark.limegreen {
+    background-color: #32CD32;
+    color: #000;
+}
+
+/* === Gray & Silver === */
+mark.darkgray {
+    background-color: #A9A9A9;
+    color: #000;
+}
+
+mark.darkslategray {
+    background-color: #2F4F4F;
+    color: #fff;
+}
+
+mark.dimgray {
+    background-color: #696969;
+    color: #fff;
+}
+
+mark.gray {
+    background-color: #808080;
+    color: #fff;
+}
+
+mark.lightgray {
+    background-color: #D3D3D3;
+    color: #000;
+}
+
+mark.lightslategray {
+    background-color: #778899;
+    color: #fff;
+}
+
+mark.silver {
+    background-color: #C0C0C0;
+    color: #000;
+}
+
+mark.slategray {
+    background-color: #708090;
+    color: #fff;
+}
+
+/* === Purple & Pink === */
+mark.crimson {
+    background-color: #DC143C;
+    color: #fff;
+}
+
+mark.fuchsia {
+    background-color: #FF00FF;
+    color: #000;
+}
+
+mark.hotpink {
+    background-color: #FF69B4;
+    color: #000;
+}
+
+mark.magenta {
+    background-color: #FF00FF;
+    color: #000;
+}
+
+mark.mediumorchid {
+    background-color: #BA55D3;
+    color: #fff;
+}
+
+mark.pink {
+    background-color: #FFC0CB;
+    color: #000;
+}
+
+mark.plum {
+    background-color: #DDA0DD;
+    color: #000;
+}
+
+mark.purple {
+    background-color: #800080;
+    color: #fff;
+}
+
+/* === Yellow & Gold === */
+mark.gold {
+    background-color: #FFD700;
+    color: #000;
+}
+
+mark.goldenrod {
+    background-color: #DAA520;
+    color: #000;
+}
+
+mark.khaki {
+    background-color: #F0E68C;
+    color: #000;
+}
+
+mark.lightyellow {
+    background-color: #FFFFE0;
+    color: #000;
+}
+
+mark.moccasin {
+    background-color: #FFE4B5;
+    color: #000;
+}
+
+mark.palegoldenrod {
+    background-color: #EEE8AA;
+    color: #000;
+}
+
+mark.wheat {
+    background-color: #F5DEB3;
+    color: #000;
+}
+
+mark.yellow {
+    background-color: #FFFF00;
+    color: #000;
+}
+
 .scrollable-list {
     height: 150px;
     /* Fixed height for the container */

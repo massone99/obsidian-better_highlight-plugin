@@ -68,11 +68,12 @@ const ColorItem = ({ colorName, colorCode, isActive }: ColorItemProps) => {
 }
 
 type ColorMapProps = {
-	app,
-	colorMap: Record<string, string>
+	app: App,
+	colorMap: Record<string, string>,
+	onClose: () => void,
 }
 
-const ReactColorPickerModal: React.FC<ColorMapProps> = ({ app, colorMap }) => {
+const ReactColorPickerModal: React.FC<ColorMapProps> = ({ app, colorMap, onClose}) => {
 	const [colorName, setColorName] = useState("");
 
 	const onInputType = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -100,14 +101,15 @@ const ReactColorPickerModal: React.FC<ColorMapProps> = ({ app, colorMap }) => {
 		e.preventDefault();
 		console.log("Confirming selection...");
 		if (firstMatch) {
-			console.log("Selected color:", firstMatch, colorMap[firstMatch]);
 			// Here you can handle the selected color (firstMatch)
 			// For example, you might want to pass it to a callback or update some state
 			const view = app.workspace.getActiveViewOfType(MarkdownView);
 			if (view) {
 				const editor = view.editor;
-				const selectedText = editor.getSelection();
-				console.log("Selected text:", selectedText);
+				const selection = editor.getSelection();
+
+				editor.replaceSelection('<mark class="' + firstMatch + '">' + selection + '</mark>');
+				onClose()
 			}
 		}
 	}
@@ -157,7 +159,7 @@ export class ColorPickerModal extends Modal {
 
 		this.reactRoot = createRoot(container);
 		this.reactRoot.render(
-			<ReactColorPickerModal app={app} colorMap={colors} />
+			<ReactColorPickerModal app={this.app} colorMap={colors} onClose={() => this.close()} />
 		);
 	}
 
