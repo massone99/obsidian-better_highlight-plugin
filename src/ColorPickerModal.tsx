@@ -75,16 +75,7 @@ type ColorMapProps = {
 
 const ReactColorPickerModal: React.FC<ColorMapProps> = ({ app, colorMap, onClose }) => {
 	const [colorName, setColorName] = useState("");
-
-	const onInputType = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		console.log("Event key pressed:", e);
-		if (e.key === 'Enter') {
-			e.preventDefault();
-			onConfirm(e);
-		} else {
-			setColorName(e.currentTarget.value);
-		}
-	}
+	const [firstMatchIdx, setFirstMatchIdx] = useState<number | null>(0);
 
 	const filteredColorNames = useMemo(() => {
 		return Object
@@ -93,14 +84,36 @@ const ReactColorPickerModal: React.FC<ColorMapProps> = ({ app, colorMap, onClose
 	}, [colorMap, colorName]);
 
 	const firstMatch = useMemo(() => {
-		return filteredColorNames.length > 0 ? filteredColorNames[0][0] as ColorName : null;
-	}, [filteredColorNames])
 
+		if (firstMatchIdx != null) {
+			return filteredColorNames[firstMatchIdx][0];
+		}
+		return null;
+	}, [firstMatchIdx, filteredColorNames]);
+
+
+	const onInputType = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		console.log("Event key pressed:", e);
+		if (e.key === 'Enter') {
+			e.preventDefault();
+			onConfirm(e);
+		} else if (e.key === "ArrowUp") {
+			if (firstMatchIdx != null) {
+				setFirstMatchIdx(Math.max(0, firstMatchIdx - 1));
+			}
+		} else if (e.key === "ArrowDown") {
+			if (firstMatchIdx != null) {
+				setFirstMatchIdx(Math.min(filteredColorNames.length - 1, firstMatchIdx + 1));
+			}
+		} else {
+			setColorName(e.currentTarget.value);
+		}
+	}
 
 	const onConfirm = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		e.preventDefault();
 		console.log("Confirming selection...");
-		if (firstMatch) {
+		if (firstMatchIdx != null) {
 			// Here you can handle the selected color (firstMatch)
 			// For example, you might want to pass it to a callback or update some state
 			const view = app.workspace.getActiveViewOfType(MarkdownView);
